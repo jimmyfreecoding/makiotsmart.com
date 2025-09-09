@@ -1,0 +1,45 @@
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+/* 为MakeIoTSmart标题添加渐变色效果 */
+.VPHero .name {
+  background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 为hero图片/logo添加渐变背景效果 */
+.VPHero .image {
+  position: relative;
+}
+
+.VPHero .image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  filter: blur(44px);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* 确保渐变效果在暗色模式下也能正常显示 */
+.dark .VPHero .name {
+  background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .VPHero .image::before {
+  background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  filter: blur(44px);
+}
