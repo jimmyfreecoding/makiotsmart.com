@@ -22,8 +22,8 @@ FROM nginx:stable-alpine AS production-stage
 # 将构建好的静态文件复制到 Nginx 的默认静态资源目录
 COPY --from=build-stage /app/docs/.vitepress/dist /usr/share/nginx/html
 
-# 修改 Nginx 默认配置，使其监听 8080 端口以匹配 EXPOSE
-RUN sed -i 's/listen\(.*\)80;/listen 8080;/g' /etc/nginx/conf.d/default.conf
+# 使用自定义的 nginx 配置以确保监听 8080 端口
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # 暴露 8080 端口
 EXPOSE 8080
